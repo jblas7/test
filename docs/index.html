@@ -133,6 +133,79 @@
             opacity: 0.8;
         }
 
+        /* Logo decorativo */
+        .logo-decorative {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 8;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.7;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #00ff44;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate 8s linear infinite;
+            background: rgba(0, 255, 68, 0.1);
+        }
+
+        .logo-icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #00ff44;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00ff44;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(0, 255, 68, 0.3);
+            border-radius: 50%;
+            border-top: 1px solid #00ff44;
+            animation: rotate 4s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .logo-bar {
+            width: 25px;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff44, #00ff88);
+            animation: pulse-bar 2s ease-in-out infinite;
+        }
+
+        .logo-bar:nth-child(1) { width: 25px; animation-delay: 0s; }
+        .logo-bar:nth-child(2) { width: 20px; animation-delay: 0.3s; }
+        .logo-bar:nth-child(3) { width: 15px; animation-delay: 0.6s; }
+
+        @keyframes pulse-bar {
+            0%, 100% { opacity: 0.6; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.2); }
+        }
+
         /* Contenedor central */
         .container {
             position: relative;
@@ -315,11 +388,16 @@
         @media (max-width: 768px) {
             .main-title {
                 font-size: 4rem;
-                top: 10%;
+                top: 12%;
+            }
+
+            .logo-decorative {
+                top: 25%;
+                transform: translateX(-50%) scale(0.8);
             }
 
             .nav-menu {
-                margin-top: 15rem;
+                margin-top: 8rem; /* Reducido significativamente */
                 gap: 1.5rem;
             }
 
@@ -338,11 +416,34 @@
             .main-title {
                 font-size: 3rem;
                 letter-spacing: 0.2rem;
+                top: 10%;
+            }
+
+            .logo-decorative {
+                top: 20%;
+                transform: translateX(-50%) scale(0.7);
+            }
+
+            .nav-menu {
+                margin-top: 4rem; /* Aún más reducido para móviles pequeños */
             }
 
             .nav-item {
                 font-size: 1.8rem;
             }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .logo-bar {
+                width: 20px;
+            }
+            
+            .logo-bar:nth-child(1) { width: 20px; }
+            .logo-bar:nth-child(2) { width: 16px; }
+            .logo-bar:nth-child(3) { width: 12px; }
         }
     </style>
 </head>
@@ -367,6 +468,15 @@
             <span class="title-letter">B</span>
             <span class="title-letter">X</span>
         </h1>
+
+        <div class="logo-decorative">
+            <div class="logo-icon"></div>
+            <div class="logo-bars">
+                <div class="logo-bar"></div>
+                <div class="logo-bar"></div>
+                <div class="logo-bar"></div>
+            </div>
+        </div>
 
         <nav class="nav-menu">
             <a href="https://instagram.com/jbx0" class="nav-item" target="_blank">instagram</a>
